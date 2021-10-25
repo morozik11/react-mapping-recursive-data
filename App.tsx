@@ -42,7 +42,7 @@ let comments: Comment[] = [
       }
     ]
   }
-];
+]
 
 const CommentItem: React.FC<{ comment: Comment, level: number }> = ({ comment, level }) => {
   const [isShowChildren, setShowChildren] = useState(false)
