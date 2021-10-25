@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import "./styles.css";
 
 interface Comment {
-  id: number
-  text: string
-  children?: Comment[]
+  id: number;
+  text: string;
+  children?: Comment[];
 }
 
 let comments: Comment[] = [
@@ -42,24 +42,27 @@ let comments: Comment[] = [
       }
     ]
   }
-]
+];
 
-const CommentItem: React.FC<{ comment: Comment, level: number }> = ({ comment, level }) => {
-  const [isShowChildren, setShowChildren] = useState(false)
+const CommentItem: React.FC<{ comment: Comment; level: number }> = ({
+  comment,
+  level
+}) => {
+  const [isShowChildren, setShowChildren] = useState(false);
 
   const changeVisibility = () => {
-    setShowChildren(!isShowChildren)
-  }
+    setShowChildren(!isShowChildren);
+  };
 
   const styleForSpan = {
     marginLeft: "5px",
     marginRight: "5px"
-  }
+  };
 
   const styleForConatiner = {
-    marginTop: '5px',
-    marginLeft: `${level*30}px`
-  }
+    marginTop: "5px",
+    marginLeft: `${level * 30}px`
+  };
 
   return (
     <>
@@ -68,22 +71,26 @@ const CommentItem: React.FC<{ comment: Comment, level: number }> = ({ comment, l
         {!isShowChildren && <span style={styleForSpan}>+</span>}
         <span style={styleForSpan}>{comment.text}</span>
         <button onClick={() => changeVisibility()}>Show children</button>
-        {
-          isShowChildren &&
+        {isShowChildren &&
           comment.children &&
-          comment.children.map((item) => (<CommentItem key={item.id} comment={item} level={level+1}></CommentItem>))
-        }
+          comment.children.map((item) => (
+            <CommentItem
+              key={item.id}
+              comment={item}
+              level={level + 1}
+            ></CommentItem>
+          ))}
       </div>
     </>
-  )
-}
+  );
+};
 
 export default function App() {
   return (
     <div className="App">
-      {
-        comments.map((item) => (<CommentItem key={item.id} comment={item} level={0}></CommentItem>))
-      }
+      {comments.map((item) => (
+        <CommentItem key={item.id} comment={item} level={0}></CommentItem>
+      ))}
     </div>
-  )
+  );
 }
