@@ -70,7 +70,7 @@ const CommentItem: React.FC<{ comment: Comment; level: number }> = ({
         {isShowChildren && <span style={styleForSpan}>-</span>}
         {!isShowChildren && <span style={styleForSpan}>+</span>}
         <span style={styleForSpan}>{comment.text}</span>
-        <button onClick={() => changeVisibility()}>Show children</button>
+        <button onClick={() => changeVisibility()}>Shange visibility children</button>
         {isShowChildren &&
           comment.children &&
           comment.children.map((item) => (
